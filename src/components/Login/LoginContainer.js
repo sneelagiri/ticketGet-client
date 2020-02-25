@@ -50,6 +50,7 @@ class LoginContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     userLoggedIn: state.user.token !== null,
     currentUserId: state.user

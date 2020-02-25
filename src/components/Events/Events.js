@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Link from "react-router";
+import { Link } from "react-router-dom";
 import "./events.css";
 class Events extends Component {
   render() {
@@ -17,10 +17,8 @@ class Events extends Component {
                 <Card.Text>{event.description}</Card.Text>
                 <Card.Text>Start Date: {event.startDate}</Card.Text>
                 <Card.Text>End Date: {event.endDate}</Card.Text>
-                <Link to={`/:${event.name}/tickets`}>
-                  <Button as={Link} variant="primary">
-                    Get a Ticket!
-                  </Button>
+                <Link to={`/${event.name}/tickets`}>
+                  <Button variant="primary">Get a Ticket!</Button>
                 </Link>
               </Card.Body>
             </Card>
