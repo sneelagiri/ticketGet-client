@@ -14,7 +14,8 @@ function fetchEventsSuccess(events) {
 export function fetchEvents() {
   return async function(dispatch, getState) {
     const response = await axios.get(`${databaseUrl}/event`);
-    dispatch(fetchEventsSuccess(response));
+    // console.log("what is the response", response);
+    dispatch(fetchEventsSuccess(response.data));
   };
 }
 

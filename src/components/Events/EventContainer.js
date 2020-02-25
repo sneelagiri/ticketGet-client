@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Events from "./Events";
 import EventForm from "./EventForm";
-import { createEvent } from "../../actions/events";
-const url = "http://localhost:4000";
+import { createEvent, fetchEvents } from "../../actions/events";
+
 class EventContainer extends Component {
   state = {
     name: "",
@@ -12,6 +12,9 @@ class EventContainer extends Component {
     startDate: "",
     endDate: ""
   };
+  componentDidMount() {
+    this.props.dispatch(fetchEvents());
+  }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -57,7 +60,8 @@ class EventContainer extends Component {
 const mapStateToProps = state => {
   return {
     userLoggedIn: state.user.token !== null,
-    currentUserId: state.user
+    currentUserId: state.user,
+    events: state.events
   };
 };
 
