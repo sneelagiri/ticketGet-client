@@ -32,11 +32,7 @@ function App() {
           <Route exact path="/" component={Home}></Route>
           <Route exact path="/signup" component={SignupContainer} />
           <Route exact path="/login" component={LoginContainer} />
-          <Route
-            exact
-            path="/:eventName/tickets"
-            component={TicketsContainer}
-          />
+          <Route exact path="/:eventId/tickets" component={TicketsContainer} />
         </Switch>
       </Router>
     </div>

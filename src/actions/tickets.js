@@ -26,15 +26,15 @@ function createTicketSuccess(ticket) {
   };
 }
 
-export function createTicket(ticket, username, event) {
+export function createTicket(ticket, userId, eventId) {
   // console.log(event);
   return async function(dispatch, getState) {
     const response = await axios.post(`${databaseUrl}/ticket`, {
       price: ticket.price,
       description: ticket.description,
       picture: ticket.picture,
-      username: username,
-      event: event
+      userId: userId,
+      eventId: eventId
     });
     // console.log(response);
     dispatch(createTicketSuccess(response.data));

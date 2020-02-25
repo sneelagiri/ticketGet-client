@@ -10,7 +10,9 @@ class TicketsContainer extends Component {
     picture: "",
     description: ""
   };
-
+  componentDidMount() {
+    // console.log(this.props.match.params);
+  }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -22,9 +24,10 @@ class TicketsContainer extends Component {
       picture: this.state.picture,
       description: this.state.description
     };
-    const username = this.props.currentUser.currentUsername;
-    const eventName = this.props.match.params.eventName;
-    this.props.dispatch(createTicket(ticket, username, eventName));
+    const userId = this.props.currentUser.currentUserId;
+
+    const eventId = this.props.match.params.eventId;
+    this.props.dispatch(createTicket(ticket, userId, eventId));
     this.setState({
       price: 0,
       picture: "",

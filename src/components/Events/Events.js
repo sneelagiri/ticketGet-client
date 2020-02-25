@@ -17,7 +17,7 @@ class Events extends Component {
                 <Card.Text>{event.description}</Card.Text>
                 <Card.Text>Start Date: {event.startDate}</Card.Text>
                 <Card.Text>End Date: {event.endDate}</Card.Text>
-                <Link to={`/${event.name}/tickets`}>
+                <Link to={`/${event.id}/tickets`}>
                   <Button variant="primary">Get a Ticket!</Button>
                 </Link>
               </Card.Body>
