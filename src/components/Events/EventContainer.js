@@ -2,25 +2,63 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Events from "./Events";
 import EventForm from "./EventForm";
-
+import { createEvent } from "../../actions/events";
 const url = "http://localhost:4000";
-export default class EventContainer extends Component {
+class EventContainer extends Component {
   state = {
-    events: [],
-    event: {
-      name: "",
-      description: ""
-    }
+    name: "",
+    description: "",
+    picture: "",
+    startDate: "",
+    endDate: ""
   };
 
-  componentDidMount() {}
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const newEvent = {
+      name: this.state.name,
+      description: this.state.description,
+      picture: this.state.picture,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate
+    };
+    // console.log(this.state);
+    // console.log("WHAT IS THIS PROPS DISPATCH", this.props.dispatch);
+    // console.log(this.props.currentUserId);
+    this.props.dispatch(createEvent(newEvent));
+    this.setState({
+      name: "",
+      description: "",
+      picture: "",
+      startDate: "",
+      endDate: ""
+    });
+  };
+
   render() {
     return (
       <div>
         <h1>Events</h1>
         <Events />
-        <EventForm />
+        <EventForm
+          values={this.state}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    userLoggedIn: state.user.token !== null,
+    currentUserId: state.user
+  };
+};
+
+export default connect(mapStateToProps)(EventContainer);

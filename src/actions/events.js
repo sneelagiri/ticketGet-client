@@ -2,6 +2,7 @@ import axios from "axios";
 const databaseUrl = "http://localhost:4000";
 
 export const FETCH_EVENTS = "FETCH_EVENTS";
+export const CREATE_EVENT = "CREATE_EVENT";
 
 function fetchEventsSuccess(events) {
   return {
@@ -14,5 +15,27 @@ export function fetchEvents() {
   return async function(dispatch, getState) {
     const response = await axios.get(`${databaseUrl}/event`);
     dispatch(fetchEventsSuccess(response));
+  };
+}
+
+function createEventSuccess(event) {
+  return {
+    type: CREATE_EVENT,
+    payload: event
+  };
+}
+
+export function createEvent(event) {
+  // console.log(event);
+  return async function(dispatch, getState) {
+    const response = await axios.post(`${databaseUrl}/event`, {
+      name: event.name,
+      description: event.description,
+      eventPicture: event.picture,
+      startDate: event.startDate,
+      endDate: event.endDate
+    });
+    // console.log(response);
+    dispatch(createEventSuccess(response.data));
   };
 }
