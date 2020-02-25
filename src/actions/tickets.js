@@ -19,24 +19,24 @@ export function fetchTickets() {
   };
 }
 
-function createTicketSuccess(ticket) {
-  return {
-    type: CREATE_TICKET,
-    payload: ticket
-  };
-}
+// function createTicketSuccess(ticket) {
+//   return {
+//     type: CREATE_TICKET,
+//     payload: ticket
+//   };
+// }
 
 export function createTicket(ticket, userId, eventId) {
-  // console.log(event);
+  // console.log(ticket);
   return async function(dispatch, getState) {
     const response = await axios.post(`${databaseUrl}/ticket`, {
       price: ticket.price,
-      description: ticket.description,
       picture: ticket.picture,
+      description: ticket.description,
       userId: userId,
       eventId: eventId
     });
     // console.log(response);
-    dispatch(createTicketSuccess(response.data));
+    dispatch(fetchTicketsSuccess(response.data));
   };
 }

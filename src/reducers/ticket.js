@@ -1,4 +1,4 @@
-import { FETCH_TICKETS, CREATE_TICKET } from "../actions/events";
+import { FETCH_TICKETS, CREATE_TICKET } from "../actions/tickets";
 
 const initialState = [];
 
