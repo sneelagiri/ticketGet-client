@@ -17,7 +17,7 @@ export function signUp(firstName, lastName, username, email, password) {
       email: email,
       password: password
     });
-    console.log(response);
+    // console.log(response);
     if (response.status === 201) {
       dispatch(signUpSuccess());
     }
@@ -38,7 +38,7 @@ export function login(email, password) {
       email,
       password
     });
-    console.log("this should contain an id", response);
+    // console.log("this should contain an id", response);
     dispatch(
       loginSuccess(
         response.data.jwt,
