@@ -47,15 +47,24 @@ function createEventSuccess(event) {
 
 export function createEvent(event) {
   // console.log(event);
+
   return async function(dispatch, getState) {
-    const response = await axios.post(`${databaseUrl}/event`, {
-      name: event.name,
-      description: event.description,
-      eventPicture: event.picture,
-      startDate: event.startDate,
-      endDate: event.endDate
+    const token = getState().user.token;
+    const response = await axios({
+      method: "POST",
+      url: `${databaseUrl}/event`,
+      headers: {
+        authorization: `Bearer ${token}`
+      },
+      data: {
+        name: event.name,
+        description: event.description,
+        eventPicture: event.picture,
+        startDate: event.startDate,
+        endDate: event.endDate
+      }
     });
-    // console.log(response);
+
     dispatch(createEventSuccess(response.data));
   };
 }

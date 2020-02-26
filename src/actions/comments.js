@@ -21,11 +21,25 @@ export function fetchComments() {
 export function createComment(comment, userId, ticketId) {
   // console.log(ticket);
   return async function(dispatch, getState) {
-    const response = await axios.post(`${databaseUrl}/comment`, {
-      comment: comment,
-      userId: userId,
-      ticketId: ticketId
+    const token = getState().user.token;
+    const response = await axios({
+      method: "POST",
+      url: `${databaseUrl}/comment`,
+      headers: {
+        authorization: `Bearer ${token}`
+      },
+      data: {
+        comment: comment,
+        userId: userId,
+        ticketId: ticketId
+      }
     });
+
+    // const response = await axios.post(`${databaseUrl}/comment`, {
+    //   comment: comment,
+    //   userId: userId,
+    //   ticketId: ticketId
+    // });
     // console.log(response);
     dispatch(fetchCommentsSuccess(response.data));
   };

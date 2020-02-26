@@ -49,22 +49,26 @@ class Comments extends Component {
             }
           });
         })}
-        <Form className="form" onSubmit={this.handleSubmit}>
-          <h3>Add a comment</h3>
-          <Form.Group controlId="formComment">
-            <Form.Control
-              onChange={this.handleChange}
-              as="textarea"
-              name="comment"
-              value={this.state.comment}
-              placeholder="Comment"
-              required
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+        {this.props.userLoggedIn ? (
+          <Form className="form" onSubmit={this.handleSubmit}>
+            <h3>Add a comment</h3>
+            <Form.Group controlId="formComment">
+              <Form.Control
+                onChange={this.handleChange}
+                as="textarea"
+                name="comment"
+                value={this.state.comment}
+                placeholder="Comment"
+                required
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        ) : (
+          <p>Login to post comments</p>
+        )}
       </div>
     );
   }

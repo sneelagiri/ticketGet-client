@@ -47,11 +47,15 @@ class EventContainer extends Component {
       <div>
         <h1>Events</h1>
         <Events />
-        <EventForm
-          values={this.state}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
+        {this.props.userLoggedIn ? (
+          <EventForm
+            values={this.state}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        ) : (
+          <p>Login to create an event</p>
+        )}
       </div>
     );
   }

@@ -43,11 +43,15 @@ class TicketsContainer extends Component {
       <div>
         <h1>Event: {this.props.currentEvent.name}</h1>
         <Tickets eventId={this.props.match.params.eventId} />
-        <TicketForm
-          values={this.state}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
+        {this.props.userLoggedIn ? (
+          <TicketForm
+            values={this.state}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        ) : (
+          <p>Login to sell your ticket</p>
+        )}
       </div>
     );
   }

@@ -61,7 +61,7 @@ class Tickets extends Component {
                       </tr>
                     );
                   } else {
-                    return <h2>No tickets for this event</h2>;
+                    return null;
                   }
                 });
               })}

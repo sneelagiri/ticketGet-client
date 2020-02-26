@@ -29,13 +29,28 @@ export function fetchTickets() {
 export function createTicket(ticket, userId, eventId) {
   // console.log(ticket);
   return async function(dispatch, getState) {
-    const response = await axios.post(`${databaseUrl}/ticket`, {
-      price: ticket.price,
-      picture: ticket.picture,
-      description: ticket.description,
-      userId: userId,
-      eventId: eventId
+    const token = getState().user.token;
+    const response = await axios({
+      method: "POST",
+      url: `${databaseUrl}/ticket`,
+      headers: {
+        authorization: `Bearer ${token}`
+      },
+      data: {
+        price: ticket.price,
+        picture: ticket.picture,
+        description: ticket.description,
+        userId: userId,
+        eventId: eventId
+      }
     });
+    // const response = await axios.post(`${databaseUrl}/ticket`, {
+    //   price: ticket.price,
+    //   picture: ticket.picture,
+    //   description: ticket.description,
+    //   userId: userId,
+    //   eventId: eventId
+    // });
     // console.log(response);
     dispatch(fetchTicketsSuccess(response.data));
   };
