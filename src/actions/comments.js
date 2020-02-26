@@ -12,7 +12,7 @@ function fetchCommentsSuccess(tickets) {
 
 export function fetchComments() {
   return async function(dispatch, getState) {
-    const response = await axios.get(`${databaseUrl}/comment`);
+    const response = await axios.get(`${databaseUrl}/comments`);
     // console.log("what is the response", response);
     dispatch(fetchCommentsSuccess(response.data));
   };

@@ -10,7 +10,7 @@ class Tickets extends Component {
       this.props.tickets.map(user => {
         if (user.tickets.length > 0) {
           return user.tickets.map(ticket => {
-            if (ticket.eventId === this.props.eventId) {
+            if (ticket.eventId == this.props.eventId) {
               tickets.push(ticket);
               return ticket;
             } else {
@@ -22,10 +22,10 @@ class Tickets extends Component {
         }
       });
     }
-
+    console.log(tickets);
     return (
       <div>
-        {tickets > 0 ? (
+        {tickets.length > 0 ? (
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>

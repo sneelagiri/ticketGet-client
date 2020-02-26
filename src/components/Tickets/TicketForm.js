@@ -9,7 +9,9 @@ export default function TicketForm(props) {
       <Form className="form" onSubmit={props.handleSubmit}>
         <h2>Sell your ticket</h2>
         <Form.Group controlId="formTicketPrice">
-          <Form.Label>Ticket Price</Form.Label>
+          <Form.Label>
+            <b>Ticket Price</b>
+          </Form.Label>
           <InputGroup.Prepend>
             <InputGroup.Text>€</InputGroup.Text>
             <Form.Control

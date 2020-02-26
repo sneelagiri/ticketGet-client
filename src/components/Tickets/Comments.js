@@ -33,7 +33,22 @@ class Comments extends Component {
     return (
       <div>
         <h2>Comments</h2>
-
+        {this.props.comments.map(user => {
+          return user.comments.map(comment => {
+            if (comment.ticketId == this.props.ticketId) {
+              return (
+                <section class="comment">
+                  <h4>
+                    {user.firstName && user.lastName
+                      ? `${user.firstName} ${user.lastName} said:`
+                      : `${user.username} said`}
+                  </h4>
+                  <p>{comment.comment}</p>
+                </section>
+              );
+            }
+          });
+        })}
         <Form className="form" onSubmit={this.handleSubmit}>
           <h3>Add a comment</h3>
           <Form.Group controlId="formComment">
@@ -61,7 +76,8 @@ const mapStateToProps = state => {
     userLoggedIn: state.user.token !== null,
     currentUser: state.user,
     events: state.events,
-    tickets: state.ticket
+    tickets: state.ticket,
+    comments: state.comments
   };
 };
 

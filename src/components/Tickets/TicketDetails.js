@@ -7,7 +7,24 @@ class TicketDetails extends Component {
   render() {
     return (
       <div>
-        <h1>Ticket from {this.props.match.params.username}</h1>
+        {this.props.tickets.map(user => {
+          if (
+            user.username == this.props.match.params.username &&
+            user.firstName &&
+            user.lastName
+          ) {
+            return (
+              <h1>
+                Ticket from {user.firstName} {user.lastName}
+              </h1>
+            );
+          } else if (user.username == this.props.match.params.username) {
+            return <h1>Ticket from {user.username}</h1>;
+          } else {
+            return null;
+          }
+        })}
+
         <h2>Risk: 5%</h2>
         {/* {console.log(this.props)} */}
         {this.props.tickets.map(user => {
