@@ -17,3 +17,15 @@
   max-width: 50%;
   min-width: 15rem;
 }
+
+.safe {
+  color: green;
+}
+
+.danger {
+  color: red;
+}
+
+.moderate {
+  color: darkorange;
+}
