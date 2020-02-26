@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Tickets from "./Tickets";
 import TicketForm from "./TicketForm";
 import { createTicket, fetchTickets } from "../../actions/tickets";
-
+import { fetchEvent } from "../../actions/events";
 class TicketsContainer extends Component {
   state = {
     price: 0,
@@ -13,7 +13,9 @@ class TicketsContainer extends Component {
   componentDidMount() {
     // console.log(this.props.match.params);
     this.props.dispatch(fetchTickets());
+    this.props.dispatch(fetchEvent(this.props.match.params.eventId));
   }
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -39,7 +41,7 @@ class TicketsContainer extends Component {
   render() {
     return (
       <div>
-        Here are all the tickets for the selected event:
+        <h1>Event: {this.props.currentEvent.name}</h1>
         <Tickets eventId={this.props.match.params.eventId} />
         <TicketForm
           values={this.state}
@@ -56,7 +58,8 @@ const mapStateToProps = state => {
     userLoggedIn: state.user.token !== null,
     currentUser: state.user,
     events: state.events,
-    tickets: state.tickets
+    tickets: state.tickets,
+    currentEvent: state.currentEvent
   };
 };
 

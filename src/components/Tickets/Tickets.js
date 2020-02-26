@@ -1,12 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 class Tickets extends Component {
   render() {
     let ticketCount = 0;
+    let tickets = [];
+    if (this.props.tickets) {
+      this.props.tickets.map(user => {
+        if (user.tickets.length > 0) {
+          return user.tickets.map(ticket => {
+            if (ticket.eventId === this.props.eventId) {
+              tickets.push(ticket);
+              return ticket;
+            } else {
+              return ticket;
+            }
+          });
+        } else {
+          return user;
+        }
+      });
+    }
+
     return (
       <div>
-        {this.props.tickets.length > 0 ? (
+        {tickets > 0 ? (
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
@@ -14,6 +33,7 @@ class Tickets extends Component {
                 <th>Seller Name</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>Ticket Page</th>
               </tr>
             </thead>
             <tbody>
@@ -24,11 +44,20 @@ class Tickets extends Component {
                     return (
                       <tr>
                         <td>{ticketCount}</td>
-                        <td>
-                          {user.firstName} {user.lastName}
-                        </td>
+                        {user.firstName && user.lastName ? (
+                          <td>
+                            {user.firstName} {user.lastName}
+                          </td>
+                        ) : (
+                          <td>{user.username}</td>
+                        )}
                         <td>€{ticket.price}</td>
                         <td>{ticket.description}</td>
+                        <td>
+                          <Link
+                            to={`/${this.props.eventId}/tickets/${user.username}/${ticket.id}`}
+                          >{`Go to ticket`}</Link>
+                        </td>
                       </tr>
                     );
                   } else {
