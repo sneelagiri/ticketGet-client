@@ -55,6 +55,7 @@ export default class EventForm extends Component {
               onChange={props.handleChange}
               type="date"
               name="endDate"
+              min={props.values.startDate}
               value={props.values.endDate}
             />
           </Form.Group>
