@@ -21,6 +21,7 @@ class EventContainer extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    console.log("This is the date format", this.state.endDate);
   };
 
   handleSubmit = event => {
@@ -47,14 +48,12 @@ class EventContainer extends Component {
 
   nextPage = () => {
     const newPage = this.state.page + 1;
-
     this.props.dispatch(fetchEvents(newPage));
     this.setState({ page: newPage });
   };
 
   previousPage = () => {
     const newPage = this.state.page - 1;
-
     this.props.dispatch(fetchEvents(newPage));
     this.setState({ page: newPage });
   };
