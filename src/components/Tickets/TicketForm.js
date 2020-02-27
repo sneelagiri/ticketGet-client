@@ -8,6 +8,16 @@ export default function TicketForm(props) {
     <div>
       <Form className="form" onSubmit={props.handleSubmit}>
         <h2>Sell your ticket</h2>
+        <Form.Group controlId="formTicketTitle">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            onChange={props.handleChange}
+            type="text"
+            name="title"
+            value={props.values.title}
+            placeholder="Title"
+          />
+        </Form.Group>
         <Form.Group controlId="formTicketPrice">
           <Form.Label>
             <b>Ticket Price</b>

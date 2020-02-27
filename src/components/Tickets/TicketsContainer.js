@@ -6,6 +6,7 @@ import { createTicket, fetchTickets } from "../../actions/tickets";
 import { fetchEvent } from "../../actions/events";
 class TicketsContainer extends Component {
   state = {
+    title: "",
     price: 0,
     picture: "",
     description: ""
@@ -23,6 +24,7 @@ class TicketsContainer extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const ticket = {
+      title: this.state.title,
       price: this.state.price,
       picture: this.state.picture,
       description: this.state.description
@@ -32,6 +34,7 @@ class TicketsContainer extends Component {
     const eventId = this.props.match.params.eventId;
     this.props.dispatch(createTicket(ticket, userId, eventId));
     this.setState({
+      title: "",
       price: 0,
       picture: "",
       description: ""

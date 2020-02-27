@@ -37,6 +37,7 @@ export function createTicket(ticket, userId, eventId) {
         authorization: `Bearer ${token}`
       },
       data: {
+        title: ticket.title,
         price: ticket.price,
         picture: ticket.picture,
         description: ticket.description,
