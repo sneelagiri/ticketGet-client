@@ -10,10 +10,12 @@ class EventContainer extends Component {
     description: "",
     picture: "",
     startDate: "",
-    endDate: ""
+    endDate: "",
+    page: 0,
+    endReached: false
   };
   componentDidMount() {
-    this.props.dispatch(fetchEvents());
+    this.props.dispatch(fetchEvents(this.state.page));
   }
 
   handleChange = event => {

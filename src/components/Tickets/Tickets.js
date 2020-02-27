@@ -22,7 +22,7 @@ class Tickets extends Component {
         }
       });
     }
-    console.log(tickets);
+    // console.log(tickets);
     return (
       <div>
         {tickets.length > 0 ? (

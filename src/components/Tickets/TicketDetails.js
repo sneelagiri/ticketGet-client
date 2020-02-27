@@ -15,7 +15,7 @@ class TicketDetails extends Component {
       return user.comments.map(comment => {
         if (comment.ticketId == this.props.match.params.ticketId) {
           numComments++;
-          console.log("Number of Comments", numComments);
+          // console.log("Number of Comments", numComments);
         }
       });
     });
@@ -89,7 +89,7 @@ class TicketDetails extends Component {
     risk = round_to_precision(risk, 0.01);
     // Based on number of comments:
 
-    console.log(averagePrice);
+    // console.log(averagePrice);
     // Risk analysis logic ends here
     return (
       <div>
@@ -110,7 +110,7 @@ class TicketDetails extends Component {
             return null;
           }
         })}
-        {console.log(risk)}
+        {/* {console.log(risk)} */}
         {risk <= 5 ? (
           <h2 className="safe">Risk: {minRisk}%</h2>
         ) : risk >= 95 ? (

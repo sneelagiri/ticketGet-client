@@ -12,9 +12,11 @@ function fetchEventsSuccess(events) {
   };
 }
 
-export function fetchEvents() {
+export function fetchEvents(page) {
   return async function(dispatch, getState) {
-    const response = await axios.get(`${databaseUrl}/events`);
+    const response = await axios.post(`${databaseUrl}/events`, {
+      page: page
+    });
     // console.log("what is the response", response);
     dispatch(fetchEventsSuccess(response.data));
   };
@@ -28,7 +30,7 @@ function fetchEventSuccess(event) {
 }
 
 export function fetchEvent(eventId) {
-  console.log("IS THE EVENT ID GETTING HERE?", eventId);
+  // console.log("IS THE EVENT ID GETTING HERE?", eventId);
   return async function(dispatch, getState) {
     const response = await axios.post(`${databaseUrl}/eventName`, {
       eventId: eventId
