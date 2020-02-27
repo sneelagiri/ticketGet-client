@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./events.css";
 class Events extends Component {
   render() {
-    return (
+    return this.props.events ? (
       <div className="eventCard">
         {this.props.events.map(event => {
           return (
@@ -25,6 +25,8 @@ class Events extends Component {
           );
         })}
       </div>
+    ) : (
+      <h1>Loading Events...</h1>
     );
   }
 }
@@ -33,7 +35,7 @@ const mapStateToProps = state => {
   return {
     userLoggedIn: state.user.token !== null,
     currentUserId: state.user,
-    events: state.events
+    events: state.events.rows
   };
 };
 

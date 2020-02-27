@@ -67,7 +67,8 @@ const mapStateToProps = state => {
   return {
     userLoggedIn: state.user.token !== null,
     currentUserId: state.user,
-    events: state.events
+    events: state.events.rows,
+    eventCount: state.events.count
   };
 };
 

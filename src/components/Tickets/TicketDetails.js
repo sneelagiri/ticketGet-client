@@ -156,7 +156,7 @@ const mapStateToProps = state => {
   return {
     userLoggedIn: state.user.token !== null,
     currentUser: state.user,
-    events: state.events,
+    events: state.events.rows,
     tickets: state.ticket,
     comments: state.comments
   };
