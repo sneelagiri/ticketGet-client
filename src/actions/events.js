@@ -47,7 +47,7 @@ function createEventSuccess(event) {
   };
 }
 
-export function createEvent(event) {
+export function createEvent(event, page) {
   // console.log(event);
 
   return async function(dispatch, getState) {
@@ -63,10 +63,11 @@ export function createEvent(event) {
         description: event.description,
         eventPicture: event.picture,
         startDate: event.startDate,
-        endDate: event.endDate
+        endDate: event.endDate,
+        page: page
       }
     });
 
-    dispatch(createEventSuccess(response.data));
+    dispatch(fetchEventsSuccess(response.data));
   };
 }

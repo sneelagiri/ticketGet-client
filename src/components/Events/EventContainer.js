@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Events from "./Events";
 import EventForm from "./EventForm";
 import { createEvent, fetchEvents } from "../../actions/events";
+import Button from "react-bootstrap/Button";
 
 class EventContainer extends Component {
   state = {
@@ -34,7 +35,7 @@ class EventContainer extends Component {
     // console.log(this.state);
     // console.log("WHAT IS THIS PROPS DISPATCH", this.props.dispatch);
     // console.log(this.props.currentUserId);
-    this.props.dispatch(createEvent(newEvent));
+    this.props.dispatch(createEvent(newEvent, this.state.page));
     this.setState({
       name: "",
       description: "",
@@ -42,6 +43,20 @@ class EventContainer extends Component {
       startDate: "",
       endDate: ""
     });
+  };
+
+  nextPage = () => {
+    const newPage = this.state.page + 1;
+
+    this.props.dispatch(fetchEvents(newPage));
+    this.setState({ page: newPage });
+  };
+
+  previousPage = () => {
+    const newPage = this.state.page - 1;
+
+    this.props.dispatch(fetchEvents(newPage));
+    this.setState({ page: newPage });
   };
 
   render() {
@@ -58,6 +73,24 @@ class EventContainer extends Component {
         ) : (
           <p>Login to create an event</p>
         )}
+        {this.state.page !== 0 ? (
+          <Button
+            variant="secondary"
+            className="previousButton"
+            onClick={this.previousPage}
+          >
+            Previous
+          </Button>
+        ) : null}
+        {this.state.page * 9 + 9 < this.props.eventCount ? (
+          <Button
+            variant="primary"
+            className="nextButton"
+            onClick={this.nextPage}
+          >
+            Next
+          </Button>
+        ) : null}
       </div>
     );
   }

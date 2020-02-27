@@ -16,3 +16,14 @@
   border: #0069d9;
   border-style: groove;
 }
+
+.previousButton {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.nextButton {
+  margin-left: 10px;
+  width: 75px;
+  margin-bottom: 20px;
+}
