@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
+import "./tickets.css";
 class Tickets extends Component {
   render() {
     let ticketCount = 0;
@@ -56,7 +57,18 @@ class Tickets extends Component {
                         )}
                         <td>€{ticket.price}</td>
                         <td>{ticket.description}</td>
-                        <td>{ticket.risk}%</td>
+                        {ticket.risk <= 5 ? (
+                          <td className="safe">5%</td>
+                        ) : ticket.risk >= 95 ? (
+                          <td className="danger">95%</td>
+                        ) : ticket.risk > 5 && ticket.risk <= 35 ? (
+                          <td className="safe">{ticket.risk}%</td>
+                        ) : ticket.risk > 35 && ticket.risk <= 75 ? (
+                          <td className="moderate">{ticket.risk}%</td>
+                        ) : (
+                          <td className="danger">{ticket.risk}%</td>
+                        )}
+
                         <td>
                           <Link
                             to={`/${this.props.eventId}/tickets/${user.username}/${ticket.id}`}
