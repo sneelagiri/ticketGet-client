@@ -101,7 +101,7 @@ class TicketDetails extends Component {
     risk = round_to_precision(risk, 0.01);
     stateRisk = risk;
     // Based on number of comments:
-
+    console.log("WHAT IS THE RISK OF THIS?", risk, stateRisk);
     // console.log(averagePrice);
     // Risk analysis logic ends here
     return (

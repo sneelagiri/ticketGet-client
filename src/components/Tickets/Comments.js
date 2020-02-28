@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createComment, fetchComments } from "../../actions/comments";
-
+import { v4 as uuidv4 } from "uuid";
 class Comments extends Component {
   state = {
     comment: ""
@@ -37,7 +37,7 @@ class Comments extends Component {
           return user.comments.map(comment => {
             if (comment.ticketId === parseInt(this.props.ticketId)) {
               return (
-                <section class="comment">
+                <section className="comment" key={uuidv4()}>
                   <h4>
                     {user.firstName && user.lastName
                       ? `${user.firstName} ${user.lastName} said:`

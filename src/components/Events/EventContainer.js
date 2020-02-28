@@ -63,15 +63,6 @@ class EventContainer extends Component {
       <div>
         <h1>Events</h1>
         <Events />
-        {this.props.userLoggedIn ? (
-          <EventForm
-            values={this.state}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        ) : (
-          <p>Login to create an event</p>
-        )}
         {this.state.page !== 0 ? (
           <Button
             variant="secondary"
@@ -90,6 +81,15 @@ class EventContainer extends Component {
             Next
           </Button>
         ) : null}
+        {this.props.userLoggedIn ? (
+          <EventForm
+            values={this.state}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        ) : (
+          <p>Login to create an event</p>
+        )}
       </div>
     );
   }
