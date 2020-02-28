@@ -2,19 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-
+import { v4 as uuidv4 } from "uuid";
 class UserTickets extends Component {
   render() {
     let ticketCount = 0;
     let tickets = [];
     if (this.props.tickets) {
-      return this.props.tickets.map(user => {
+      this.props.tickets.map(user => {
         if (user.id === this.props.currentUser.currentUserId) {
           if (user.tickets.length > 0) {
-            return user.tickets.map(ticket => {
+            user.tickets.map(ticket => {
               ticketCount++;
               tickets.push(ticket);
-              return ticket;
             });
           } else {
             return user;
@@ -42,10 +41,13 @@ class UserTickets extends Component {
             </thead>
             <tbody>
               {this.props.tickets.map(user => {
-                if (user.id === this.props.currentUser.currentUserId) {
+                if (
+                  parseInt(user.id) ===
+                  parseInt(this.props.currentUser.currentUserId)
+                ) {
                   return user.tickets.map(ticket => {
                     return (
-                      <tr>
+                      <tr key={uuidv4()}>
                         <td>{ticketCount}</td>
                         <td>{ticket.title}</td>
                         <td>€{ticket.price}</td>
