@@ -7,6 +7,7 @@ import LoginContainer from "./components/Login/LoginContainer";
 import Home from "./components/Home";
 import TicketsContainer from "./components/Tickets/TicketsContainer";
 import TicketDetails from "./components/Tickets/TicketDetails";
+import UpdateTicketContainer from "./components/UpdateTicket/UpdateTicketContainer";
 
 function App() {
   return (
@@ -34,6 +35,11 @@ function App() {
           <Route exact path="/signup" component={SignupContainer} />
           <Route exact path="/login" component={LoginContainer} />
           <Route exact path="/:eventId/tickets" component={TicketsContainer} />
+          <Route
+            exact
+            path="/:username/updateTickets"
+            component={UpdateTicketContainer}
+          />
           <Route
             exact
             path="/:eventId/tickets/:username/:ticketId"

@@ -59,3 +59,23 @@ export function updateTicket(ticketId, risk) {
     dispatch(fetchTicketsSuccess(response.data));
   };
 }
+
+export function updateTicketDetails(ticketId, ticket) {
+  return async function(dispatch, getState) {
+    const token = getState().user.token;
+    const response = await axios({
+      method: "PUT",
+      url: `${databaseUrl}/ticket/${parseInt(ticketId)}`,
+      headers: {
+        authorization: `Bearer ${token}`
+      },
+      data: {
+        title: ticket.title,
+        price: ticket.price,
+        picture: ticket.picture,
+        description: ticket.description
+      }
+    });
+    dispatch(fetchTicketsSuccess(response.data));
+  };
+}

@@ -4,6 +4,7 @@ import Tickets from "./Tickets";
 import TicketForm from "./TicketForm";
 import { createTicket, fetchTickets } from "../../actions/tickets";
 import { fetchEvent } from "../../actions/events";
+import { Link } from "react-router-dom";
 class TicketsContainer extends Component {
   state = {
     title: "",
@@ -55,6 +56,23 @@ class TicketsContainer extends Component {
         ) : (
           <p>Login to sell your ticket</p>
         )}
+        {this.props.tickets
+          ? this.props.tickets.map(user => {
+              if (user.id === this.props.currentUser.currentUserId) {
+                if (user.tickets.length > 0) {
+                  return (
+                    <Link
+                      to={`/${this.props.currentUser.currentUsername}/updateTickets`}
+                    >
+                      Modify your tickets
+                    </Link>
+                  );
+                } else {
+                  return null;
+                }
+              }
+            })
+          : null}
       </div>
     );
   }
@@ -65,7 +83,7 @@ const mapStateToProps = state => {
     userLoggedIn: state.user.token !== null,
     currentUser: state.user,
     events: state.events.rows,
-    tickets: state.tickets,
+    tickets: state.ticket,
     currentEvent: state.currentEvent
   };
 };

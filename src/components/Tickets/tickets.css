@@ -20,12 +20,15 @@
 
 .safe {
   color: green;
+  font-weight: bold;
 }
 
 .danger {
   color: red;
+  font-weight: bold;
 }
 
 .moderate {
   color: darkorange;
+  font-weight: bold;
 }
