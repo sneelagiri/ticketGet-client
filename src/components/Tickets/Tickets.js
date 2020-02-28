@@ -30,9 +30,11 @@ class Tickets extends Component {
             <thead>
               <tr>
                 <th>#</th>
+                <th>Title</th>
                 <th>Seller Name</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>Risk</th>
                 <th>Ticket Page</th>
               </tr>
             </thead>
@@ -44,6 +46,7 @@ class Tickets extends Component {
                     return (
                       <tr>
                         <td>{ticketCount}</td>
+                        <td>{ticket.title}</td>
                         {user.firstName && user.lastName ? (
                           <td>
                             {user.firstName} {user.lastName}
@@ -53,6 +56,7 @@ class Tickets extends Component {
                         )}
                         <td>€{ticket.price}</td>
                         <td>{ticket.description}</td>
+                        <td>{ticket.risk}%</td>
                         <td>
                           <Link
                             to={`/${this.props.eventId}/tickets/${user.username}/${ticket.id}`}

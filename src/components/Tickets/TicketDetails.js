@@ -3,7 +3,15 @@ import { connect } from "react-redux";
 import Image from "react-bootstrap/Image";
 import "./tickets.css";
 import Comments from "./Comments";
+import { updateTicket } from "../../actions/tickets";
+let stateRisk = 0;
 class TicketDetails extends Component {
+  componentDidMount() {
+    this.props.dispatch(
+      updateTicket(this.props.match.params.ticketId, stateRisk)
+    );
+  }
+
   render() {
     function round_to_precision(x, precision) {
       var y = +x + (precision === undefined ? 0.5 : precision / 2);
@@ -87,6 +95,7 @@ class TicketDetails extends Component {
       });
     });
     risk = round_to_precision(risk, 0.01);
+    stateRisk = risk;
     // Based on number of comments:
 
     // console.log(averagePrice);

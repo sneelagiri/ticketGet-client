@@ -40,13 +40,6 @@ export function fetchEvent(eventId) {
   };
 }
 
-function createEventSuccess(event) {
-  return {
-    type: CREATE_EVENT,
-    payload: event
-  };
-}
-
 export function createEvent(event, page) {
   // console.log(event);
 

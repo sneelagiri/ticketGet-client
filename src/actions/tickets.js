@@ -19,15 +19,8 @@ export function fetchTickets() {
   };
 }
 
-// function createTicketSuccess(ticket) {
-//   return {
-//     type: CREATE_TICKET,
-//     payload: ticket
-//   };
-// }
-
 export function createTicket(ticket, userId, eventId) {
-  // console.log(ticket);
+  console.log("What does the ticket look like?", ticket);
   return async function(dispatch, getState) {
     const token = getState().user.token;
     const response = await axios({
@@ -45,14 +38,24 @@ export function createTicket(ticket, userId, eventId) {
         eventId: eventId
       }
     });
-    // const response = await axios.post(`${databaseUrl}/ticket`, {
-    //   price: ticket.price,
-    //   picture: ticket.picture,
-    //   description: ticket.description,
-    //   userId: userId,
-    //   eventId: eventId
-    // });
-    // console.log(response);
+    dispatch(fetchTicketsSuccess(response.data));
+  };
+}
+
+export function updateTicket(ticketId, risk) {
+  console.log("This is the Ticket ID and risk", ticketId, risk);
+  return async function(dispatch, getState) {
+    const token = getState().user.token;
+    const response = await axios({
+      method: "PUT",
+      url: `${databaseUrl}/ticket/${parseInt(ticketId)}`,
+      headers: {
+        authorization: `Bearer ${token}`
+      },
+      data: {
+        risk: risk
+      }
+    });
     dispatch(fetchTicketsSuccess(response.data));
   };
 }

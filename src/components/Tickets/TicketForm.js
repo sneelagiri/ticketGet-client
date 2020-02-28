@@ -9,7 +9,9 @@ export default function TicketForm(props) {
       <Form className="form" onSubmit={props.handleSubmit}>
         <h2>Sell your ticket</h2>
         <Form.Group controlId="formTicketTitle">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>
+            <b>Title</b>
+          </Form.Label>
           <Form.Control
             onChange={props.handleChange}
             type="text"
