@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+
 class UserTickets extends Component {
   render() {
     let ticketCount = 0;
     let tickets = [];
     if (this.props.tickets) {
-      this.props.tickets.map(user => {
+      return this.props.tickets.map(user => {
         if (user.id === this.props.currentUser.currentUserId) {
           if (user.tickets.length > 0) {
             return user.tickets.map(ticket => {
@@ -15,6 +16,8 @@ class UserTickets extends Component {
               tickets.push(ticket);
               return ticket;
             });
+          } else {
+            return user;
           }
         } else {
           return user;
@@ -72,6 +75,8 @@ class UserTickets extends Component {
                       </tr>
                     );
                   });
+                } else {
+                  return null;
                 }
               })}
             </tbody>

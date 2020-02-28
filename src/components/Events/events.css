@@ -13,7 +13,8 @@
 }
 .eventForm {
   margin: 0 32.5% 2.5% 32.5%;
-  border: #0069d9;
+  border: 1px solid black;
+  border-radius: 5px;
   border-style: groove;
 }
 

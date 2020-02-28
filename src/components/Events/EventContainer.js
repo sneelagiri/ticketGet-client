@@ -21,7 +21,7 @@ class EventContainer extends Component {
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-    console.log("This is the date format", this.state.endDate);
+    // console.log("This is the date format", this.state.endDate);
   };
 
   handleSubmit = event => {

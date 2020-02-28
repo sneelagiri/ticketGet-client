@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import "./tickets.css";
+import { v4 as uuidv4 } from "uuid";
 class Tickets extends Component {
   render() {
     let ticketCount = 0;
@@ -11,7 +12,7 @@ class Tickets extends Component {
       this.props.tickets.map(user => {
         if (user.tickets.length > 0) {
           return user.tickets.map(ticket => {
-            if (ticket.eventId == this.props.eventId) {
+            if (ticket.eventId === parseInt(this.props.eventId)) {
               tickets.push(ticket);
               return ticket;
             } else {
@@ -42,10 +43,10 @@ class Tickets extends Component {
             <tbody>
               {this.props.tickets.map(user => {
                 return user.tickets.map(ticket => {
-                  if (ticket.eventId == this.props.eventId) {
+                  if (ticket.eventId === parseInt(this.props.eventId)) {
                     ticketCount++;
                     return (
-                      <tr>
+                      <tr key={uuidv4()}>
                         <td>{ticketCount}</td>
                         <td>{ticket.title}</td>
                         {user.firstName && user.lastName ? (

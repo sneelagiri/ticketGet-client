@@ -35,7 +35,7 @@ class Comments extends Component {
         <h2>Comments</h2>
         {this.props.comments.map(user => {
           return user.comments.map(comment => {
-            if (comment.ticketId == this.props.ticketId) {
+            if (comment.ticketId === parseInt(this.props.ticketId)) {
               return (
                 <section class="comment">
                   <h4>
@@ -46,6 +46,8 @@ class Comments extends Component {
                   <p>{comment.comment}</p>
                 </section>
               );
+            } else {
+              return null;
             }
           });
         })}

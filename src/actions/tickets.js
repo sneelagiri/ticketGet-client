@@ -20,7 +20,7 @@ export function fetchTickets() {
 }
 
 export function createTicket(ticket, userId, eventId) {
-  console.log("What does the ticket look like?", ticket);
+  // console.log("What does the ticket look like?", ticket);
   return async function(dispatch, getState) {
     const token = getState().user.token;
     const response = await axios({
@@ -43,7 +43,7 @@ export function createTicket(ticket, userId, eventId) {
 }
 
 export function updateTicket(ticketId, risk) {
-  console.log("This is the Ticket ID and risk", ticketId, risk);
+  // console.log("This is the Ticket ID and risk", ticketId, risk);
   return async function(dispatch, getState) {
     const token = getState().user.token;
     const response = await axios({

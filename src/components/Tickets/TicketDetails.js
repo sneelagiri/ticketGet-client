@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Image from "react-bootstrap/Image";
+// import Image from "react-bootstrap/Image";
 import "./tickets.css";
 import Comments from "./Comments";
 import { updateTicket } from "../../actions/tickets";
+import { v4 as uuidv4 } from "uuid";
 let stateRisk = 0;
 class TicketDetails extends Component {
   componentDidMount() {
@@ -21,9 +22,12 @@ class TicketDetails extends Component {
     let numComments = 0;
     this.props.comments.map(user => {
       return user.comments.map(comment => {
-        if (comment.ticketId == this.props.match.params.ticketId) {
+        if (comment.ticketId === parseInt(this.props.match.params.ticketId)) {
           numComments++;
+          return comment;
           // console.log("Number of Comments", numComments);
+        } else {
+          return comment;
         }
       });
     });
@@ -31,7 +35,7 @@ class TicketDetails extends Component {
     let sumPrice = 0;
     this.props.tickets.map(user => {
       return user.tickets.map(ticket => {
-        if (ticket.eventId == this.props.match.params.eventId) {
+        if (ticket.eventId === parseInt(this.props.match.params.eventId)) {
           numTickets++;
           sumPrice = sumPrice + ticket.price;
           return ticket;
@@ -47,7 +51,7 @@ class TicketDetails extends Component {
     this.props.tickets.map(user => {
       return user.tickets.map(ticket => {
         if (
-          ticket.id == this.props.match.params.ticketId &&
+          ticket.id === parseInt(this.props.match.params.ticketId) &&
           user.tickets.length === 1
         ) {
           risk = risk + 10;
@@ -69,7 +73,7 @@ class TicketDetails extends Component {
             risk = risk - priceDifference;
           }
           return ticket;
-        } else if (ticket.id == this.props.match.params.ticketId) {
+        } else if (ticket.id === parseInt(this.props.match.params.ticketId)) {
           if (numComments > 3) {
             risk = risk + 5;
           }
@@ -104,7 +108,7 @@ class TicketDetails extends Component {
       <div>
         {this.props.tickets.map(user => {
           if (
-            user.username == this.props.match.params.username &&
+            user.username === parseInt(this.props.match.params.username) &&
             user.firstName &&
             user.lastName
           ) {
@@ -113,7 +117,9 @@ class TicketDetails extends Component {
                 Ticket from {user.firstName} {user.lastName}
               </h1>
             );
-          } else if (user.username == this.props.match.params.username) {
+          } else if (
+            user.username === parseInt(this.props.match.params.username)
+          ) {
             return <h1>Ticket from {user.username}</h1>;
           } else {
             return null;
@@ -136,15 +142,19 @@ class TicketDetails extends Component {
         {this.props.tickets.map(user => {
           return user.tickets.map(ticket => {
             // console.log("GET THIS FAR?");
-            if (ticket.id == this.props.match.params.ticketId) {
+            if (ticket.id === parseInt(this.props.match.params.ticketId)) {
               // console.log("DID I GET THIS FAR?");
               return (
-                <div className="ticketDiv">
+                <div className="ticketDiv" key={uuidv4()}>
                   <h2>
                     <b>Price: €{ticket.price}</b>
                   </h2>
                   <div>
-                    <img src={ticket.picture} className="ticketImage" />
+                    <img
+                      src={ticket.picture}
+                      className="ticketImage"
+                      alt="ticket"
+                    />
                     <p className="ticketDesc">{ticket.description}</p>
                   </div>
                 </div>

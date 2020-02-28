@@ -5,6 +5,7 @@ import TicketForm from "./TicketForm";
 import { createTicket, fetchTickets } from "../../actions/tickets";
 import { fetchEvent } from "../../actions/events";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 class TicketsContainer extends Component {
   state = {
     title: "",
@@ -62,6 +63,7 @@ class TicketsContainer extends Component {
                 if (user.tickets.length > 0) {
                   return (
                     <Link
+                      key={uuidv4()}
                       to={`/${this.props.currentUser.currentUsername}/updateTickets`}
                     >
                       Modify your tickets
@@ -70,6 +72,8 @@ class TicketsContainer extends Component {
                 } else {
                   return null;
                 }
+              } else {
+                return null;
               }
             })
           : null}
