@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import Image from "react-bootstrap/Image";
+import Image from "react-bootstrap/Image";
 import "./tickets.css";
 import Comments from "./Comments";
 import { updateTicket } from "../../actions/tickets";
@@ -101,7 +101,7 @@ class TicketDetails extends Component {
     risk = round_to_precision(risk, 0.01);
     stateRisk = risk;
     // Based on number of comments:
-    console.log("WHAT IS THE RISK OF THIS?", risk, stateRisk);
+    // console.log("WHAT IS THE RISK OF THIS?", risk, stateRisk);
     // console.log(averagePrice);
     // Risk analysis logic ends here
     return (
@@ -150,7 +150,7 @@ class TicketDetails extends Component {
                     <b>Price: €{ticket.price}</b>
                   </h2>
                   <div>
-                    <img
+                    <Image
                       src={ticket.picture}
                       className="ticketImage"
                       alt="ticket"

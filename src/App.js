@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import Nav from "react-bootstrap/Nav";
 import SignupContainer from "./components/Signup/SignupContainer";
 import LoginContainer from "./components/Login/LoginContainer";
@@ -46,6 +47,9 @@ function App() {
             component={TicketDetails}
           />
         </Switch>
+        {/* <div className="page-footer">
+          Made by Shashank Neelagiri at Codaisseur Academy
+        </div> */}
       </Router>
     </div>
   );

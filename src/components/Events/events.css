@@ -28,3 +28,9 @@
   width: 75px;
   margin-bottom: 20px;
 }
+
+.eventCard {
+  display: inline-table;
+  margin-left: 10px;
+  margin-right: 10px;
+}
