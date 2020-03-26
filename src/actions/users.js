@@ -17,17 +17,17 @@ export function signUp(firstName, lastName, username, email, password) {
       email: email,
       password: password
     });
-    console.log(response);
+    // console.log(response);
     if (response.status === 201) {
       dispatch(signUpSuccess());
     }
   };
 }
-function loginSuccess(token, userId) {
+function loginSuccess(token, userId, username) {
   // console.log("is this an id? 2", userId);
   return {
     type: LOGIN_SUCCESS,
-    payload: { token: token, currentUserId: userId }
+    payload: { token: token, currentUserId: userId, currentUsername: username }
   };
 }
 
@@ -39,7 +39,13 @@ export function login(email, password) {
       password
     });
     // console.log("this should contain an id", response);
-    dispatch(loginSuccess(response.data.jwt, response.data.userId));
+    dispatch(
+      loginSuccess(
+        response.data.jwt,
+        response.data.userId,
+        response.data.username
+      )
+    );
   };
 }
 

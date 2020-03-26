@@ -1,0 +1,34 @@
+* {
+  text-align: center;
+}
+
+.ticketImage {
+  display: inline;
+}
+
+.ticketDesc {
+  display: inline;
+}
+
+.comment {
+  margin: 1rem auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  max-width: 50%;
+  min-width: 15rem;
+}
+
+.safe {
+  color: green;
+  font-weight: bold;
+}
+
+.danger {
+  color: red;
+  font-weight: bold;
+}
+
+.moderate {
+  color: darkorange;
+  font-weight: bold;
+}

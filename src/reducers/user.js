@@ -1,6 +1,11 @@
 import { USER_CREATED, LOGIN_SUCCESS } from "../actions/users";
 
-const initialState = { userCreated: false, token: null, currentUserId: null };
+const initialState = {
+  userCreated: false,
+  token: null,
+  currentUserId: null,
+  currentUsername: null
+};
 
 export default (state = initialState, action = {}) => {
   // console.log("ACTION:??, guessing sucks", action);
@@ -13,7 +18,8 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         token: action.payload.token,
-        currentUserId: action.payload.currentUserId
+        currentUserId: action.payload.currentUserId,
+        currentUsername: action.payload.currentUsername
       };
     default:
       return state;

@@ -18,9 +18,7 @@ class LoginContainer extends Component {
     // console.log(this.state);
     // console.log("WHAT IS THIS PROPS DISPATCH", this.props.dispatch);
     // console.log(this.props.currentUserId);
-    this.props.dispatch(
-      login(this.state.email, this.state.password, this.props.currentUserId)
-    );
+    this.props.dispatch(login(this.state.email, this.state.password));
     this.setState({
       email: "",
       password: ""
@@ -50,9 +48,10 @@ class LoginContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  // console.log(state);
   return {
     userLoggedIn: state.user.token !== null,
-    currentUserId: state.user
+    currentUser: state.user
   };
 };
 

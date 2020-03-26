@@ -41,7 +41,9 @@ class SignupContainer extends Component {
     return (
       <div>
         <h1>Sign up here!</h1>
-        {this.props.userCreated ? <h1>Account created</h1> : null}
+        {this.props.userCreated ? (
+          <h1>Account created {this.props.history.push("/login")}</h1>
+        ) : null}
         <SignupForm
           text={"Signup"}
           handleSubmit={this.handleSubmit}
