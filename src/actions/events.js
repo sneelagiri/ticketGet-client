@@ -1,5 +1,6 @@
 import axios from "axios";
-const databaseUrl = "http://localhost:4000";
+const databaseUrl =
+  "https://ticketget-server.herokuapp.com/" || "http://localhost:4000";
 
 export const FETCH_EVENT = "FETCH_EVENT";
 export const FETCH_EVENTS = "FETCH_EVENTS";
