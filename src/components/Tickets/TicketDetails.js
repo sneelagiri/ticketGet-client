@@ -5,7 +5,9 @@ import "./tickets.css";
 import Comments from "./Comments";
 import { updateTicket } from "../../actions/tickets";
 import { v4 as uuidv4 } from "uuid";
+
 let stateRisk = 0;
+
 class TicketDetails extends Component {
   componentDidMount() {
     this.props.dispatch(
@@ -13,21 +15,20 @@ class TicketDetails extends Component {
     );
   }
 
+  round_to_precision(x, precision) {
+    var y = +x + (precision === undefined ? 0.5 : precision / 2);
+    return y - (y % (precision === undefined ? 1 : +precision));
+  }
+
   render() {
-    function round_to_precision(x, precision) {
-      var y = +x + (precision === undefined ? 0.5 : precision / 2);
-      return y - (y % (precision === undefined ? 1 : +precision));
-    }
     // Risk analysis logic stars
     let numComments = 0;
-    this.props.comments.map(user => {
-      return user.comments.map(comment => {
+    this.props.comments.forEach(user => {
+      user.comments.forEach(comment => {
         if (comment.ticketId === parseInt(this.props.match.params.ticketId)) {
           numComments++;
           return comment;
           // console.log("Number of Comments", numComments);
-        } else {
-          return comment;
         }
       });
     });
@@ -98,7 +99,7 @@ class TicketDetails extends Component {
         }
       });
     });
-    risk = round_to_precision(risk, 0.01);
+    risk = this.round_to_precision(risk, 0.01);
     stateRisk = risk;
     // Based on number of comments:
     // console.log("WHAT IS THE RISK OF THIS?", risk, stateRisk);
