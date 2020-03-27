@@ -49,15 +49,3 @@ export function login(email, password) {
     );
   };
 }
-
-// function updateUserSuccessful(object) {
-//   return {
-//     type: "UPDATE_USER",
-//     payload: object
-//   };
-// }
-// export function updateUser(object) {
-//   return async function(dispatch, getState) {
-//     dispatch(updateUserSuccessful(object));
-//   };
-// }
