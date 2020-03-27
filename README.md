@@ -1,4 +1,8 @@
+[![Codeship Status for sneelagiri/ticketGet-client](https://app.codeship.com/projects/e69e3f60-5260-0138-0dea-6ada19186fd1/status?branch=master)](https://app.codeship.com/projects/390430)
+
 # 🎟️ TicketGet 🎟️
+
+![Preview](https://i.imgur.com/sr0gVYK.png)
 
 ## What this project is about
 This is my own attempt at making a platform where buyers and sellers can meet to buy/sell event tickets. For more info on why I am doing this, checkout: **[Goals for this project](#goals-for-this-project)** 
