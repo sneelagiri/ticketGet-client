@@ -1,4 +1,6 @@
 import axios from "axios";
+import { fetchTicketsSuccess } from "./tickets";
+
 const databaseUrl = "http://localhost:4000";
 
 export const FETCH_COMMENTS = "FETCH_COMMENTS";
@@ -42,5 +44,6 @@ export function createComment(comment, userId, ticketId) {
     // });
     // console.log(response);
     dispatch(fetchCommentsSuccess(response.data));
+    dispatch(fetchTicketsSuccess(response.data));
   };
 }

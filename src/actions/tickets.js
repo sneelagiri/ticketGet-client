@@ -4,7 +4,7 @@ const databaseUrl = "http://localhost:4000";
 export const FETCH_TICKETS = "FETCH_TICKETS";
 export const CREATE_TICKET = "CREATE_TICKET";
 
-function fetchTicketsSuccess(tickets) {
+export function fetchTicketsSuccess(tickets) {
   return {
     type: FETCH_TICKETS,
     payload: tickets
