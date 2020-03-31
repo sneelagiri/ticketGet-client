@@ -1,6 +1,9 @@
 import axios from "axios";
+
+import { fetchTicketsSuccess } from "./tickets";
 const databaseUrl =
   "https://ticketget-server.herokuapp.com" || "http://localhost:4000";
+
 
 export const FETCH_COMMENTS = "FETCH_COMMENTS";
 

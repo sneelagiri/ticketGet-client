@@ -28,7 +28,14 @@ class Tickets extends Component {
     return (
       <div>
         {tickets.length > 0 ? (
-          <Table striped bordered hover variant="dark">
+          <Table
+            striped
+            hover
+            variant="dark"
+            responsive
+            bordered
+            className="ticketsTable"
+          >
             <thead>
               <tr>
                 <th>#</th>

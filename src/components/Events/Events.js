@@ -10,7 +10,11 @@ class Events extends Component {
       <div className="eventCard">
         {this.props.events.map(event => {
           return (
-            <Card style={{ width: "18rem" }} key={event.id}>
+            <Card
+              style={{ width: "18rem" }}
+              key={event.id}
+              className="eventCard"
+            >
               <Card.Img variant="top" src={event.eventPicture} />
               <Card.Body>
                 <Card.Title>{event.name}</Card.Title>

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { v4 as uuidv4 } from "uuid";
+import "./updateTickets.css";
+
 class UserTickets extends Component {
   render() {
     let ticketCount = 0;
@@ -26,8 +28,16 @@ class UserTickets extends Component {
     // console.log(tickets);
     return (
       <div>
+        <h1>Your Tickets</h1>
         {tickets.length > 0 ? (
-          <Table striped bordered hover variant="dark">
+          <Table
+            striped
+            bordered
+            hover
+            variant="dark"
+            responsive
+            className="ticketsTable"
+          >
             <thead>
               <tr>
                 <th>#</th>

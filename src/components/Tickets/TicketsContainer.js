@@ -62,12 +62,14 @@ class TicketsContainer extends Component {
               if (user.id === this.props.currentUser.currentUserId) {
                 if (user.tickets.length > 0) {
                   return (
-                    <Link
-                      key={uuidv4()}
-                      to={`/${this.props.currentUser.currentUsername}/updateTickets`}
-                    >
-                      Modify your tickets
-                    </Link>
+                    <div className="modifyLink">
+                      <Link
+                        key={uuidv4()}
+                        to={`/${this.props.currentUser.currentUsername}/updateTickets`}
+                      >
+                        Modify your tickets
+                      </Link>
+                    </div>
                   );
                 } else {
                   return null;

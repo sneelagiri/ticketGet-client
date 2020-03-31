@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { createComment, fetchComments } from "../../actions/comments";
 import { v4 as uuidv4 } from "uuid";
+import { fetchTickets } from "../../actions/tickets";
 class Comments extends Component {
   state = {
     comment: ""
@@ -22,14 +23,34 @@ class Comments extends Component {
     event.preventDefault();
     const userId = this.props.currentUser.currentUserId;
     // const eventId = this.props.match.params.eventId;
-    this.props.dispatch(
-      createComment(this.state.comment, userId, this.props.ticketId)
-    );
+    this.props
+      .dispatch(createComment(this.state.comment, userId, this.props.ticketId))
+      .then(() => {
+        this.props.dispatch(fetchTickets());
+      });
     this.setState({
       comment: ""
     });
   };
   render() {
+    this.props.comments.map(user => {
+      return user.comments.map(comment => {
+        if (comment.ticketId === parseInt(this.props.ticketId)) {
+          return (
+            <section className="comment" key={uuidv4()}>
+              <h4>
+                {user.firstName && user.lastName
+                  ? `${user.firstName} ${user.lastName} said:`
+                  : `${user.username} said`}
+              </h4>
+              <p>{comment.comment}</p>
+            </section>
+          );
+        } else {
+          return null;
+        }
+      });
+    });
     return (
       <div>
         <h2>Comments</h2>

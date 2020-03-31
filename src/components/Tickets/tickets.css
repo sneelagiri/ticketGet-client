@@ -3,11 +3,18 @@
 }
 
 .ticketImage {
-  display: inline;
+  display: inline-block;
+  width: 200px;
+  padding-right: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .ticketDesc {
   display: inline;
+  padding-left: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .comment {
@@ -31,4 +38,13 @@
 .moderate {
   color: darkorange;
   font-weight: bold;
+}
+
+.ticketsTable {
+  width: 95%;
+  margin: auto auto 30px auto;
+}
+
+.modifyLink {
+  margin-bottom: 20px;
 }
