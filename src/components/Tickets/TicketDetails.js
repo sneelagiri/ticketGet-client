@@ -34,8 +34,8 @@ class TicketDetails extends Component {
     });
     let numTickets = 0;
     let sumPrice = 0;
-    this.props.tickets.map(user => {
-      return user.tickets.map(ticket => {
+    this.props.tickets.forEach(user => {
+      return user.tickets.forEach(ticket => {
         if (ticket.eventId === parseInt(this.props.match.params.eventId)) {
           numTickets++;
           sumPrice = sumPrice + ticket.price;
@@ -49,8 +49,8 @@ class TicketDetails extends Component {
     const maxRisk = 95;
     let risk = 0;
     const averagePrice = sumPrice / numTickets;
-    this.props.tickets.map(user => {
-      return user.tickets.map(ticket => {
+    this.props.tickets.forEach(user => {
+      return user.tickets.forEach(ticket => {
         if (
           ticket.id === parseInt(this.props.match.params.ticketId) &&
           user.tickets.length === 1
@@ -107,7 +107,7 @@ class TicketDetails extends Component {
     // Risk analysis logic ends here
     return (
       <div>
-        {this.props.tickets.map(user => {
+        {this.props.tickets.forEach(user => {
           if (
             user.username === parseInt(this.props.match.params.username) &&
             user.firstName &&
@@ -140,8 +140,8 @@ class TicketDetails extends Component {
         )}
 
         {/* {console.log(this.props)} */}
-        {this.props.tickets.map(user => {
-          return user.tickets.map(ticket => {
+        {this.props.tickets.forEach(user => {
+          return user.tickets.forEach(ticket => {
             // console.log("GET THIS FAR?");
             if (ticket.id === parseInt(this.props.match.params.ticketId)) {
               // console.log("DID I GET THIS FAR?");

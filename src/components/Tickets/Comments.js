@@ -33,8 +33,8 @@ class Comments extends Component {
     return (
       <div>
         <h2>Comments</h2>
-        {this.props.comments.map(user => {
-          return user.comments.map(comment => {
+        {this.props.comments.forEach(user => {
+          return user.comments.forEach(comment => {
             if (comment.ticketId === parseInt(this.props.ticketId)) {
               return (
                 <section className="comment" key={uuidv4()}>

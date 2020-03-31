@@ -10,10 +10,10 @@ class UserTickets extends Component {
     let ticketCount = 0;
     let tickets = [];
     if (this.props.tickets) {
-      this.props.tickets.map(user => {
+      this.props.tickets.forEach(user => {
         if (user.id === this.props.currentUser.currentUserId) {
           if (user.tickets.length > 0) {
-            user.tickets.map(ticket => {
+            user.tickets.forEach(ticket => {
               ticketCount++;
               tickets.push(ticket);
             });
@@ -50,12 +50,12 @@ class UserTickets extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.tickets.map(user => {
+              {this.props.tickets.forEach(user => {
                 if (
                   parseInt(user.id) ===
                   parseInt(this.props.currentUser.currentUserId)
                 ) {
-                  return user.tickets.map(ticket => {
+                  return user.tickets.forEach(ticket => {
                     return (
                       <tr key={uuidv4()}>
                         <td>{ticketCount}</td>
