@@ -9,9 +9,9 @@ class Tickets extends Component {
     let ticketCount = 0;
     let tickets = [];
     if (this.props.tickets) {
-      this.props.tickets.forEach(user => {
+      this.props.tickets.map(user => {
         if (user.tickets.length > 0) {
-          return user.tickets.forEach(ticket => {
+          return user.tickets.map(ticket => {
             if (ticket.eventId === parseInt(this.props.eventId)) {
               tickets.push(ticket);
               return ticket;
@@ -48,8 +48,8 @@ class Tickets extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.tickets.forEach(user => {
-                return user.tickets.forEach(ticket => {
+              {this.props.tickets.map(user => {
+                return user.tickets.map(ticket => {
                   if (ticket.eventId === parseInt(this.props.eventId)) {
                     ticketCount++;
                     return (

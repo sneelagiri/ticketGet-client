@@ -58,7 +58,7 @@ class TicketsContainer extends Component {
           <p>Login to sell your ticket</p>
         )}
         {this.props.tickets
-          ? this.props.tickets.forEach(user => {
+          ? this.props.tickets.map(user => {
               if (user.id === this.props.currentUser.currentUserId) {
                 if (user.tickets.length > 0) {
                   return (

@@ -8,7 +8,7 @@ class Events extends Component {
   render() {
     return this.props.events ? (
       <div className="eventCard">
-        {this.props.events.forEach(event => {
+        {this.props.events.map(event => {
           return (
             <Card
               style={{ width: "18rem" }}
